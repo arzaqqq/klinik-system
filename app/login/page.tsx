@@ -14,10 +14,7 @@ export default function LoginPage() {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({
-        username,
-        password
-      })
+      body: JSON.stringify({ username, password })
     })
 
     const data = await res.json()
@@ -27,16 +24,16 @@ export default function LoginPage() {
       return
     }
 
-    // simpan token + roles
+    // simpan hasil login
     localStorage.setItem("token", data.token)
     localStorage.setItem("roles", JSON.stringify(data.roles))
 
-    // lanjut ke select role
+    // pindah ke role selection
     router.push("/select-role")
   }
 
   return (
-    <div style={{ padding: 20 }}>
+    <div style={{ padding: 30 }}>
       <h2>Login Klinik</h2>
 
       <input
